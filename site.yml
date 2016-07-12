@@ -1,6 +1,7 @@
 - name: Ansible-Sample-TDD
   hosts: server
-  user: root
+  become_user: root 
+  become: yes
   vars:
     worker_connections: 2048
   roles:

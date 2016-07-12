@@ -9,6 +9,11 @@
   with_items:
     - nginx
 
+- name: install firewalld 
+  yum: pkg={{ item }} state=installed 
+  with_items:
+    - firewalld 
+
 - name: insert iptables rule
   lineinfile:
     dest=/etc/nginx/nginx.conf
@@ -17,6 +22,10 @@
 
 - name: ensure nginx is running automatically at boot time
   service: name=nginx state=restarted enabled=yes
+
+- name: ensure firewalld is running automatically at boot time
+  service: name=firewalld state=restarted enabled=yes
+
 
 - name: insert iptables rule
   command: firewall-cmd --add-port "{{ www_port }}/tcp" --permanent
