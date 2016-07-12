@@ -9,12 +9,11 @@ describe service('nginx') do
   it { should be_running   }
 end
 
-describe package('FirewallD') do
+describe package('firewalld') do
   it { should be_installed }
 end
 
-
-describe service('FirewallD') do
+describe service('firewalld') do
   it { should be_enabled   }
   it { should be_running   }
 end
